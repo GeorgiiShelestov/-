@@ -1,0 +1,33 @@
+﻿<Window x:Class="PassengerTransportCompany.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PassengerTransportCompany"
+        mc:Ignorable="d"
+        Title="Пассажирское автотранспортное агенство - Отдел кадров" Height="450" Width="800">
+    <Window.Resources>
+        <local:DateTimeToDateConverter x:Key="myDateConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" x:Name="phonesGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Code}" Header="Код" Width="50"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия" Width="110"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" Width="110"/>
+                <DataGridTextColumn Binding="{Binding MiddleName}" Header="Отчество" Width="110"/>
+                <DataGridTextColumn Binding="{Binding DateBirth, Converter={StaticResource myDateConverter}}" Header="Дата рождения" Width="110"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Контактный телефон" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Department}" Header="Отдел" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="saveButton" Margin="10" Width="150" Height="50" Content="Сохранить" Click="saveButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
